@@ -1,7 +1,9 @@
 package org.pooledbytearray.weakref;
 
-import java.lang.ref.ReferenceQueue;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Deque;
+import java.util.Iterator;
+import java.util.List;
 import java.util.concurrent.ConcurrentLinkedDeque;
 
 public class PooledByteArrayFactory

@@ -7,10 +7,12 @@ import java.io.OutputStream;
 public class PooledByteArray
 {
     private byte[] bytes = null;
+    private PooledByteArrayFactory pooledByteArrayFactory;
 
-    PooledByteArray(byte[] bytes)
+    PooledByteArray(byte[] bytes,PooledByteArrayFactory pooledByteArrayFactory)
     {
         this.bytes = bytes;
+        this.pooledByteArrayFactory = pooledByteArrayFactory;
     }
 
     public int length()
@@ -46,5 +48,9 @@ public class PooledByteArray
     public int readFrom(InputStream in, int offset, int len) throws IOException
     {
         return in.read(bytes, offset, len);
+    }
+    public void close(){
+        pooledByteArrayFactory.returnByteArray(this.bytes);
+        this.bytes = null;
     }
 }

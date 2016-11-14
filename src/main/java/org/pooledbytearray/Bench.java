@@ -4,12 +4,15 @@ package org.pooledbytearray;
  Implementation switch
 ****/
 //import org.pooledbytearray.weakref.*;
-import org.pooledbytearray.dumbring.*;
-//import org.pooledbytearray.finalizer.*;
-/****/
+
+import org.pooledbytearray.dumbring.PooledByteArray;
+import org.pooledbytearray.dumbring.PooledByteArrayFactory;
 
 import java.util.HashMap;
 import java.util.Map;
+
+//import org.pooledbytearray.finalizer.*;
+/****/
 
 
 public class Bench extends Thread
@@ -38,7 +41,7 @@ public class Bench extends Thread
 
     public Bench(int allocationSize)
     {
-        object = new HashMap<>();
+        object = new HashMap<String, String>();
         object.put("field1", "titi");
         object.put("field2", "tutu");
         object.put("field3", "toto");

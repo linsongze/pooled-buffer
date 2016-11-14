@@ -26,7 +26,15 @@ public class PooledByteArrayFactory
     {
         byte[] bytes = pool.poll();
         pool.offer(bytes);
-        return new PooledByteArray(bytes);
+        return new PooledByteArray(bytes,this);
     }
+
+    protected void returnByteArray(byte[] bytes){
+        if( bytes == null || bytes.length != arraySize){
+            throw new ArraySizeException("array size is wrong");
+        }
+       pool.add(bytes);
+    }
+
 
 }
