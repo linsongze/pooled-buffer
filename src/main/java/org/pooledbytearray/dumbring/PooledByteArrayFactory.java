@@ -25,7 +25,6 @@ public class PooledByteArrayFactory
     public PooledByteArray getByteArray()
     {
         byte[] bytes = pool.poll();
-        pool.offer(bytes);
         return new PooledByteArray(bytes,this);
     }
 
