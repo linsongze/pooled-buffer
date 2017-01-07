@@ -1,4 +1,4 @@
-package org.pooledbytearray.dumbring;
+package org.pooledbytearray.exception;
 
 /**
  * Created by lsz on 2016/11/14.
