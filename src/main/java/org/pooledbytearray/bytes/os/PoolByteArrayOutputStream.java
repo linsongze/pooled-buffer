@@ -1,7 +1,7 @@
 package org.pooledbytearray.bytes.os;
 
-import org.pooledbytearray.buffer.Buffer;
-import org.pooledbytearray.bytes.ByteArrayBuffers;
+import org.pooledbytearray.buffer.bytes.Buffer;
+import org.pooledbytearray.buffer.bytes.ByteArrayBuffers;
 
 import java.io.IOException;
 import java.io.OutputStream;

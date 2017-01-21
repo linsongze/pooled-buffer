@@ -1,30 +1,30 @@
 package org.pooledbytearray.config;
 
 import org.apache.commons.pool2.PooledObjectFactory;
-import org.pooledbytearray.buffer.Buffer;
+import org.pooledbytearray.buffer.bytes.Buffer;
+import org.pooledbytearray.buffer.string.StrBuffer;
 import org.pooledbytearray.factory.ByteArrayBufferFactory;
+import org.pooledbytearray.factory.CharArrayBufferFactory;
 
 /**
  * Created by lsz on 2017/1/8.
  */
-public class PoolConfig {
+public class PoolConfig<T> {
     private int maxTotal;
     private int maxIdle;
     private int bufferSize;
-    private PooledObjectFactory<Buffer> pooledObjectFactory;
+    private PooledObjectFactory<T> pooledObjectFactory;
     private PoolConfig(){};
-    public static PoolConfig create(int maxTotal
-            ,int maxIdle,int bufferSize,PooledObjectFactory<Buffer> pooledObjectFactory
+    public  PoolConfig(int maxTotal
+            ,int maxIdle,int bufferSize,PooledObjectFactory<T> pooledObjectFactory
 
             ){
-        PoolConfig poolConfig = new PoolConfig();
-        poolConfig.setMaxTotal(maxTotal)
+        this.setMaxTotal(maxTotal)
                 .setMaxIdle(maxIdle)
                 .setBufferSize(bufferSize)
                 .setPooledObjectFactory(pooledObjectFactory)
         ;
 
-        return poolConfig;
     }
 
     public int getMaxTotal() {
@@ -54,17 +54,22 @@ public class PoolConfig {
         return this;
     }
 
-    public PooledObjectFactory<Buffer> getPooledObjectFactory() {
+    public PooledObjectFactory<T> getPooledObjectFactory() {
         return pooledObjectFactory;
     }
 
-    public PoolConfig setPooledObjectFactory(PooledObjectFactory<Buffer> pooledObjectFactory) {
+    public PoolConfig setPooledObjectFactory(PooledObjectFactory pooledObjectFactory) {
         this.pooledObjectFactory = pooledObjectFactory;
         return this;
     }
-    public static PoolConfig createDefault(){
+    public static PoolConfig bsPoolDefault(){
         int bufferSize = 1024*1024;
-        return create(50,20,bufferSize,new ByteArrayBufferFactory(bufferSize));
+        PoolConfig<Buffer> bufferPoolConfig = new PoolConfig<>(50,20,bufferSize,new ByteArrayBufferFactory(bufferSize));
+        return bufferPoolConfig;
     }
-
+    public static PoolConfig charsPoolDefault(){
+        int bufferSize = 1024*1024;
+        PoolConfig<StrBuffer> bufferPoolConfig = new PoolConfig<>(50,20,bufferSize,new CharArrayBufferFactory(bufferSize));
+        return bufferPoolConfig;
+    }
 }

@@ -3,7 +3,7 @@ package org.pooledbytearray;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.pooledbytearray.bytes.ByteArrayBuffers;
+import org.pooledbytearray.buffer.bytes.ByteArrayBuffers;
 import org.pooledbytearray.bytes.os.ByteArrayOutputStream;
 import org.pooledbytearray.config.PoolConfig;
 
@@ -15,7 +15,7 @@ public class PoolByteArrayOutputStreamTest {
 
     @Before
     public void init(){
-        PoolConfig poolConfig = PoolConfig.createDefault();
+        PoolConfig poolConfig = PoolConfig.bsPoolDefault();
         buffers=new ByteArrayBuffers(poolConfig);
     }
     @Test

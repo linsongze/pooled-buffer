@@ -1,18 +1,18 @@
-package org.pooledbytearray.bytes;
+package org.pooledbytearray.buffer.bytes;
 
 import org.apache.commons.pool2.impl.GenericObjectPool;
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
-import org.pooledbytearray.buffer.Buffer;
+import org.pooledbytearray.buffer.bytes.Buffer;
 import org.pooledbytearray.bytes.os.ByteArrayOutputStream;
 import org.pooledbytearray.bytes.os.PoolByteArrayOutputStream;
 import org.pooledbytearray.config.PoolConfig;
 
 public class ByteArrayBuffers
 {
-    private PoolConfig poolConfig;
+    private PoolConfig<Buffer> poolConfig;
     GenericObjectPool<Buffer> genericObjectPool  ;
 
-    public ByteArrayBuffers(PoolConfig poolConfig){
+    public ByteArrayBuffers(PoolConfig<Buffer> poolConfig){
         this.poolConfig = poolConfig;
         GenericObjectPoolConfig conf = new GenericObjectPoolConfig();
         conf.setMaxTotal(poolConfig.getMaxTotal());

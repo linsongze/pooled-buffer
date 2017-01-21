@@ -1,4 +1,4 @@
-package org.pooledbytearray.buffer;
+package org.pooledbytearray.buffer.bytes;
 
 import org.pooledbytearray.exception.BufferOutIndexException;
 
