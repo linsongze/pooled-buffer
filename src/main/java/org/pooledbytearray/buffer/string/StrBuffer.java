@@ -2,18 +2,22 @@ package org.pooledbytearray.buffer.string;
 
 import org.pooledbytearray.exception.BufferOutIndexException;
 
+import java.util.Arrays;
+
 /**
  * Created by lsz on 2017/1/21.
  */
-public class StrBuffer {
+public class StrBuffer  implements  AutoCloseable{
     private char[] values= null;
     private int count;
     private int arraySize;
+    private StrBuffers strBuffers;
     public StrBuffer(char[] values){
         this.values = values;
         this.arraySize = values.length;
         this.count = 0 ;
     }
+
     public StrBuffer append(char c){
         ensureCapacityInternal(count + 1);
         values[count++] = c;
@@ -60,8 +64,17 @@ public class StrBuffer {
             new BufferOutIndexException("out of array size limit :"+arraySize);
         }
     }
+    public char[] toCharArray(){
+        return Arrays.copyOf(values, count);
+    }
     public String toString(){
         return new String(values,0,count);
     }
 
+    @Override
+    public void close() throws Exception {
+       if(strBuffers!=null){
+           strBuffers.returnThis(this);
+       }
+    }
 }

@@ -23,6 +23,8 @@ public class StrBuffers {
         return buffer;
     }
     public void returnThis(StrBuffer strBuffer){
+        if(strBuffer == null)return;
+        strBuffer.reset();
         genericObjectPool.returnObject(strBuffer);
     }
 }

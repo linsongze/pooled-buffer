@@ -64,12 +64,12 @@ public class PoolConfig<T> {
     }
     public static PoolConfig bsPoolDefault(){
         int bufferSize = 1024*1024;
-        PoolConfig<Buffer> bufferPoolConfig = new PoolConfig<>(50,20,bufferSize,new ByteArrayBufferFactory(bufferSize));
+        PoolConfig<Buffer> bufferPoolConfig = new PoolConfig<Buffer>(50,20,bufferSize,new ByteArrayBufferFactory(bufferSize));
         return bufferPoolConfig;
     }
     public static PoolConfig charsPoolDefault(){
         int bufferSize = 1024*1024;
-        PoolConfig<StrBuffer> bufferPoolConfig = new PoolConfig<>(50,20,bufferSize,new CharArrayBufferFactory(bufferSize));
+        PoolConfig<StrBuffer> bufferPoolConfig = new PoolConfig<StrBuffer>(50,20,bufferSize,new CharArrayBufferFactory(bufferSize));
         return bufferPoolConfig;
     }
 }
