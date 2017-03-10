@@ -59,10 +59,10 @@ public class StrBuffer  implements  AutoCloseable{
     }
     private void ensureCapacityInternal(int minimumCapacity) {
         // overflow-conscious code
-        if (minimumCapacity - arraySize > 0)
-        {
-            new BufferOutIndexException("out of array size limit :"+arraySize);
-        }
+//        if (minimumCapacity - arraySize > 0)
+//        {
+//            new BufferOutIndexException("out of array size limit :"+arraySize);
+//        }
     }
     public char[] toCharArray(){
         return Arrays.copyOf(values, count);
